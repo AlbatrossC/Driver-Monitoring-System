@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>About - Driver Monitoring System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+:root {
+  --primary: #111827;
+  --secondary: #6b7280;
+  --accent: #2563eb;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --border: #e5e7eb;
+  --bg: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--primary);
+  line-height: 1.6;
+}
+
+/* HEADER */
+.header {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.nav-links { display: flex; gap: 24px; align-items: center; }
+.nav-link {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+.nav-link:hover, .nav-link.active { color: var(--primary); }
+
+.github-link {
+  background: var(--primary);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* SECTIONS */
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: var(--secondary);
+  margin-bottom: 40px;
+  max-width: 800px;
+}
+
+/* HERO */
+#hero {
+  text-align: center;
+  border-bottom: 2px solid var(--border);
+}
+
+#hero h1 {
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+}
+
+#hero .lead {
+  font-size: 20px;
+  color: var(--secondary);
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+}
+
+/* GRID LAYOUTS */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+/* VISUAL BOX */
+.visual-box {
+  background: #f9fafb;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.visual-box svg {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.caption {
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--secondary);
+  font-style: italic;
+  text-align: center;
+}
+
+/* MODEL COMPARISON */
+.model-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.model-box {
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 30px;
+  background: white;
+}
+
+.model-box h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: var(--primary);
+}
+
+.model-box .badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.badge-blue { background: #dbeafe; color: #1e40af; }
+.badge-green { background: #d1fae5; color: #065f46; }
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 14px;
+}
+
+.spec-row:last-child { border-bottom: none; }
+.spec-label { color: var(--secondary); }
+.spec-value { font-family: 'Courier New', monospace; color: var(--primary); }
+
+/* CLASS LISTS */
+.class-list {
+  background: #f9fafb;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.class-list h4 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: var(--primary);
+}
+
+.class-list ul {
+  list-style: none;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.class-list li {
+  color: var(--secondary);
+  padding: 4px 0;
+}
+
+/* UNIFICATION TABLE */
+.unification-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  font-size: 14px;
+}
+
+.unification-table th {
+  background: var(--primary);
+  color: white;
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.unification-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.unification-table tr:last-child td {
+  border-bottom: none;
+}
+
+.arrow-cell {
+  text-align: center;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #374151;
+  transform: translateY(-1px);
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-dialog {
+  background: #1e1e1e;
+  width: 95%;
+  max-width: 1000px;
+  max-height: 85vh;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+  transform: scale(0.95);
+  transition: transform 0.25s ease;
+}
+
+.modal.active .modal-dialog {
+  transform: scale(1);
+}
+
+.modal-header {
+  background: #252526;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #3e3e42;
+}
+
+.modal-title {
+  color: #e5e7eb;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  background: #3e3e42;
+  color: white;
+}
+
+.modal-body {
+  max-height: calc(85vh - 60px);
+  overflow-y: auto;
+}
+
+.modal-body pre {
+  padding: 24px;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #d4d4d4;
+  margin: 0;
+  background: #1e1e1e;
+}
+
+/* Syntax highlighting */
+.kwd { color: #c678dd; font-weight: 600; }
+.str { color: #98c379; }
+.fun { color: #61afef; }
+.com { color: #7f848e; font-style: italic; }
+.num { color: #d19a66; }
+
+/* FLOW STEPS */
+.flow-steps {
+  margin-top: 40px;
+}
+
+.flow-step {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 30px;
+  align-items: flex-start;
+}
+
+.step-num {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--accent), #1d4ed8);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.step-content h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.step-content p {
+  font-size: 15px;
+  color: var(--secondary);
+  margin: 0;
+}
+
+/* DATA SOURCE */
+.data-source {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 10px;
+  padding: 24px;
+  margin-top: 30px;
+}
+
+.data-source h4 {
+  font-size: 18px;
+  color: #0369a1;
+  margin-bottom: 12px;
+}
+
+.data-source p {
+  color: #0c4a6e;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.data-source a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.data-source a:hover {
+  text-decoration: underline;
+}
+
+/* TEAM */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.team-member {
+  text-align: center;
+  padding: 30px 20px;
+  background: #f9fafb;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.team-member h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.team-member p {
+  font-size: 13px;
+  color: var(--secondary);
+  margin: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .grid-2, .model-comparison { grid-template-columns: 1fr; }
+  .section { min-height: auto; padding: 60px 20px; }
+  #hero h1 { font-size: 48px; }
+  .section-title { font-size: 32px; }
+}
+
+@media (max-width: 768px) {
+  .grid-3, .team-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <a href="/" class="logo">DMS</a>
+  <div class="nav-links">
+    <a href="/about.html" class="nav-link active">About</a>
+    <a href="https://github.com/AlbatrossC/Driver-Monitoring-System" target="_blank" class="github-link">GitHub</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero" class="section">
+  <h1>Driver Monitoring System</h1>
+  <p class="lead">
+    An AI-powered platform that detects dangerous driving behaviors in real-time using dual YOLO models, advanced computer vision, and intelligent detection algorithms running entirely in your browser.
+  </p>
+</section>
+
+<!-- ARCHITECTURE -->
+<section id="architecture" class="section">
+  <h2 class="section-title">System Architecture</h2>
+  <p class="section-subtitle">Complete pipeline from image upload to final detection results using dual-model approach.</p>
+  
+  <div class="visual-box">
+    <svg viewBox="0 0 900 650" xmlns="http://www.w3.org/2000/svg">
+      <!-- Upload -->
+      <rect x="375" y="20" width="150" height="50" rx="6" fill="white" stroke="#2563eb" stroke-width="2"/>
+      <text x="450" y="50" text-anchor="middle" font-size="14" font-weight="600" fill="#111827">User Upload</text>
+      
+      <path d="M 450 70 L 450 100" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+      
+      <!-- Preprocessing -->
+      <rect x="375" y="100" width="150" height="50" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+      <text x="450" y="130" text-anchor="middle" font-size="13" font-weight="600" fill="#1e40af">Preprocessing</text>
+      
+      <path d="M 450 150 L 450 170" stroke="#6b7280" stroke-width="2"/>
+      <path d="M 450 170 L 250 210" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+      <path d="M 450 170 L 650 210" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+      
+      <!-- Chaitanya -->
+      <rect x="100" y="210" width="180" height="80" rx="6" fill="#dbeafe" stroke="#1e40af" stroke-width="2"/>
+      <text x="190" y="235" text-anchor="middle" font-size="14" font-weight="700" fill="#1e40af">Chaitanya Model</text>
+      <text x="190" y="255" text-anchor="middle" font-size="12" fill="#4b5563">YOLOv8</text>
+      <text x="190" y="275" text-anchor="middle" font-size="11" fill="#6b7280">5 Classes • 8400 Det</text>
+      
+      <!-- Soham -->
+      <rect x="620" y="210" width="180" height="80" rx="6" fill="#d1fae5" stroke="#065f46" stroke-width="2"/>
+      <text x="710" y="235" text-anchor="middle" font-size="14" font-weight="700" fill="#065f46">Soham Model</text>
+      <text x="710" y="255" text-anchor="middle" font-size="12" fill="#4b5563">YOLO11</text>
+      <text x="710" y="275" text-anchor="middle" font-size="11" fill="#6b7280">8 Classes • 8400 Det</text>
+      
+      <path d="M 190 290 L 250 330" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+      <path d="M 710 290 L 650 330" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+      
+      <!-- Parsing -->
+      <rect x="375" y="330" width="150" height="50" rx="6" fill="white" stroke="#2563eb" stroke-width="2"/>
+      <text x="450" y="360" text-anchor="middle" font-size="13" font-weight="600" fill="#111827">Parse & Filter</text>
+      
+      <path d="M 450 380 L 450 410" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+      
+      <!-- Unification -->
+      <rect x="375" y="410" width="150" height="50" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+      <text x="450" y="440" text-anchor="middle" font-size="13" font-weight="600" fill="#92400e">Unify Classes</text>
+      
+      <path d="M 450 460 L 450 490" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+      
+      <!-- NMS -->
+      <rect x="350" y="490" width="200" height="60" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+      <text x="450" y="515" text-anchor="middle" font-size="14" font-weight="700" fill="#991b1b">Enhanced NMS</text>
+      <text x="450" y="535" text-anchor="middle" font-size="11" fill="#6b7280">IoU + Center Check</text>
+      
+      <path d="M 450 550 L 450 580" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+      
+      <!-- Final -->
+      <rect x="375" y="580" width="150" height="50" rx="6" fill="#dcfce7" stroke="#10b981" stroke-width="2"/>
+      <text x="450" y="610" text-anchor="middle" font-size="13" font-weight="600" fill="#065f46">Final Results</text>
+      
+      <defs>
+        <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#6b7280"/>
+        </marker>
+      </defs>
+    </svg>
+    <div class="caption">Complete detection pipeline from upload to final results</div>
+  </div>
+</section>
+
+<!-- DUAL MODELS -->
+<section id="models" class="section">
+  <h2 class="section-title">Dual Model Architecture</h2>
+  <p class="section-subtitle">Two distinct YOLO architectures working in parallel for robust detection.</p>
+  
+  <div class="model-comparison">
+    <!-- Chaitanya -->
+    <div class="model-box">
+      <span class="badge badge-blue">Model A</span>
+      <h3>Chaitanya Model</h3>
+      <p style="font-size: 14px; color: var(--secondary); margin-bottom: 20px;">
+        YOLOv8 architecture optimized for core safety violations. Uses C2f blocks for efficient feature extraction.
+      </p>
+      
+      <div class="spec-row">
+        <span class="spec-label">Architecture</span>
+        <span class="spec-value">YOLOv8</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Core Block</span>
+        <span class="spec-value">C2f (CSPDarknet)</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Output</span>
+        <span class="spec-value">[1, 9, 8400]</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Classes</span>
+        <span class="spec-value">5</span>
+      </div>
+      
+      <div class="class-list">
+        <h4>Detected Classes</h4>
+        <ul>
+          <li>0: Cigarette</li>
+          <li>1: Drinking</li>
+          <li>2: Eating</li>
+          <li>3: Phone</li>
+          <li>4: Seatbelt</li>
+        </ul>
+      </div>
+      
+      <div class="class-list" style="margin-top: 15px;">
+        <h4>Training Distribution</h4>
+        <ul>
+          <li>Drinking: 771 samples</li>
+          <li>Cigarette: 365 samples</li>
+          <li>Seatbelt: 429 samples</li>
+          <li>Eating: 261 samples</li>
+          <li>Phone: 55 samples</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Soham -->
+    <div class="model-box">
+      <span class="badge badge-green">Model B</span>
+      <h3>Soham Model</h3>
+      <p style="font-size: 14px; color: var(--secondary); margin-bottom: 20px;">
+        YOLO11 next-gen architecture with PSA attention mechanisms and C3k2 blocks for detecting subtle behaviors.
+      </p>
+      
+      <div class="spec-row">
+        <span class="spec-label">Architecture</span>
+        <span class="spec-value">YOLO11</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Core Block</span>
+        <span class="spec-value">C3k2 + PSA</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Output</span>
+        <span class="spec-value">[1, 12, 8400]</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Classes</span>
+        <span class="spec-value">8</span>
+      </div>
+      
+      <div class="class-list">
+        <h4>Detected Classes</h4>
+        <ul>
+          <li>0: Distracted</li>
+          <li>1: Drinking</li>
+          <li>2: Drowsy</li>
+          <li>3: Eating</li>
+          <li>4: PhoneUse</li>
+          <li>5: SafeDriving</li>
+          <li>6: Seatbelt</li>
+          <li>7: Smoking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Data Source -->
+  <div class="data-source">
+    <h4>Dataset Source</h4>
+    <p>Both models were trained on datasets from <strong>Roboflow</strong>, a comprehensive platform for computer vision datasets and model training.</p>
+    <p><a href="https://roboflow.com" target="_blank">Visit Roboflow →</a></p>
+  </div>
+</section>
+
+<!-- CLASS UNIFICATION -->
+<section id="unification" class="section">
+  <h2 class="section-title">Class Name Unification</h2>
+  <p class="section-subtitle">Standardizing class names across both models for consistent detection results.</p>
+  
+  <table class="unification-table">
+    <thead>
+      <tr>
+        <th>Chaitanya Model</th>
+        <th>Soham Model</th>
+        <th></th>
+        <th>Unified Output</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Cigarette</td>
+        <td>Smoking</td>
+        <td class="arrow-cell">→</td>
+        <td><strong>Smoking</strong></td>
+      </tr>
+      <tr>
+        <td>Phone</td>
+        <td>PhoneUse</td>
+        <td class="arrow-cell">→</td>
+        <td><strong>Phone Usage</strong></td>
+      </tr>
+      <tr>
+        <td>Drinking</td>
+        <td>Drinking</td>
+        <td class="arrow-cell">→</td>
+        <td><strong>Drinking</strong></td>
+      </tr>
+      <tr>
+        <td>Eating</td>
+        <td>Eating</td>
+        <td class="arrow-cell">→</td>
+        <td><strong>Eating</strong></td>
+      </tr>
+      <tr>
+        <td>Seatbelt</td>
+        <td>Seatbelt</td>
+        <td class="arrow-cell">→</td>
+        <td><strong>Seatbelt</strong></td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Distracted</td>
+        <td class="arrow-cell">→</td>
+        <td><strong>Distracted</strong></td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Drowsy</td>
+        <td class="arrow-cell">→</td>
+        <td><strong>Drowsy</strong></td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>SafeDriving</td>
+        <td class="arrow-cell">→</td>
+        <td><em style="color: var(--secondary);">Filtered out</em></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PREPROCESSING -->
+<section id="preprocessing" class="section">
+  <div class="grid-2">
+    <div>
+      <h2 class="section-title">Image Preprocessing</h2>
+      <p class="section-subtitle">Letterbox technique preserves aspect ratio while resizing to 640×640 pixels.</p>
+      <p style="font-size: 15px; color: var(--secondary); margin-bottom: 20px;">
+        Images are resized using gray padding bars to maintain their original proportions. The preprocessing pipeline normalizes pixel values to [0, 1] and separates RGB channels into float32 tensors.
+      </p>
+      <button class="btn btn-primary" onclick="openModal('modal-prep')">
+        <span>View Code</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="visual-box">
+      <svg viewBox="0 0 550 250" xmlns="http://www.w3.org/2000/svg">
+        <!-- Original -->
+        <g transform="translate(30, 60)">
+          <rect x="0" y="0" width="100" height="130" rx="4" fill="#e5e7eb" stroke="#111827" stroke-width="2"/>
+          <rect x="15" y="15" width="70" height="100" fill="#d1d5db"/>
+          <text x="50" y="-10" text-anchor="middle" font-size="12" font-weight="600">Original</text>
+          <text x="50" y="150" text-anchor="middle" font-size="10" fill="#6b7280">800×600</text>
+        </g>
+        
+        <path d="M 140 125 L 190 125" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow2)" fill="none"/>
+        
+        <!-- Letterboxed -->
+        <g transform="translate(190, 60)">
+          <rect x="0" y="0" width="130" height="130" rx="4" fill="#f3f4f6" stroke="#2563eb" stroke-width="2"/>
+          <rect x="0" y="0" width="130" height="15" fill="#9ca3af"/>
+          <rect x="15" y="15" width="100" height="75" fill="#d1d5db"/>
+          <rect x="0" y="90" width="130" height="40" fill="#9ca3af"/>
+          <text x="65" y="-10" text-anchor="middle" font-size="12" font-weight="600" fill="#2563eb">Letterboxed</text>
+          <text x="65" y="150" text-anchor="middle" font-size="10" fill="#6b7280">640×640</text>
+        </g>
+        
+        <path d="M 330 125 L 380 125" stroke="#10b981" stroke-width="2" marker-end="url(#arrow2)" fill="none"/>
+        
+        <!-- Tensor -->
+        <g transform="translate(380, 60)">
+          <rect x="0" y="0" width="90" height="130" rx="4" fill="#d1fae5" stroke="#10b981" stroke-width="2"/>
+          <text x="45" y="50" text-anchor="middle" font-size="11" fill="#065f46" font-weight="600">[1, 3,</text>
+          <text x="45" y="70" text-anchor="middle" font-size="11" fill="#065f46" font-weight="600">640,</text>
+          <text x="45" y="90" text-anchor="middle" font-size="11" fill="#065f46" font-weight="600">640]</text>
+          <text x="45" y="-10" text-anchor="middle" font-size="12" font-weight="600" fill="#10b981">Tensor</text>
+          <text x="45" y="150" text-anchor="middle" font-size="10" fill="#6b7280">Float32</text>
+        </g>
+        
+        <defs>
+          <marker id="arrow2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#6b7280"/>
+          </marker>
+        </defs>
+      </svg>
+      <div class="caption">Preprocessing maintains aspect ratio using letterbox padding</div>
+    </div>
+  </div>
+</section>
+
+<!-- ENHANCED NMS -->
+<section id="nms" class="section">
+  <h2 class="section-title">Enhanced NMS Algorithm</h2>
+  <p class="section-subtitle">Core innovation that solves duplicate detection using IoU and center containment.</p>
+  
+  <div class="visual-box" style="margin-top: 30px;">
+    <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
+      <!-- Problem -->
+      <g transform="translate(40, 20)">
+        <text x="100" y="0" text-anchor="middle" font-size="15" font-weight="700">Problem</text>
+        
+        <rect x="10" y="20" width="170" height="180" rx="4" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,4"/>
+        <text x="95" y="35" text-anchor="middle" font-size="11" fill="#6b7280">Same Person</text>
+        
+        <rect x="30" y="50" width="130" height="90" rx="3" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="2"/>
+        <text x="40" y="70" font-size="10" fill="#ef4444" font-weight="600">59%</text>
+        
+        <rect x="50" y="70" width="90" height="60" rx="3" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="2" stroke-dasharray="3,2"/>
+        <text x="60" y="90" font-size="10" fill="#ef4444" font-weight="600">34%</text>
+        
+        <rect x="70" y="90" width="50" height="35" rx="3" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="2" stroke-dasharray="2,1"/>
+        <text x="80" y="105" font-size="10" fill="#ef4444" font-weight="600">32%</text>
+        
+        <circle cx="95" cy="95" r="2" fill="#ef4444"/>
+        <circle cx="95" cy="100" r="2" fill="#ef4444"/>
+        <circle cx="95" cy="105" r="2" fill="#ef4444"/>
+        
+        <text x="95" y="230" text-anchor="middle" font-size="11" fill="#6b7280">IoU: 0.35</text>
+        <text x="95" y="250" text-anchor="middle" font-size="12" fill="#ef4444" font-weight="600">NMS Fails</text>
+      </g>
+
+      <!-- Arrow -->
+      <g transform="translate(240, 120)">
+        <path d="M 0 0 L 80 0" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow3)" fill="none"/>
+        <rect x="15" y="-25" width="50" height="40" rx="6" fill="#2563eb"/>
+        <text x="40" y="-8" text-anchor="middle" font-size="11" fill="white" font-weight="700">Enhanced</text>
+        <text x="40" y="5" text-anchor="middle" font-size="11" fill="white" font-weight="700">NMS</text>
+      </g>
+
+      <!-- Solution -->
+      <g transform="translate(360, 20)">
+        <text x="100" y="0" text-anchor="middle" font-size="15" font-weight="700">Solution</text>
+        
+        <rect x="30" y="50" width="130" height="90" rx="3" fill="rgba(16,185,129,0.1)" stroke="#10b981" stroke-width="2"/>
+        <circle cx="95" cy="95" r="3" fill="#10b981"/>
+        <text x="40" y="70" font-size="11" fill="#10b981" font-weight="600">Drinking 59%</text>
+        
+        <text x="95" y="170" text-anchor="middle" font-size="11" fill="#6b7280">Center Check ✓</text>
+        <text x="95" y="230" text-anchor="middle" font-size="11" fill="#10b981">Single Box</text>
+        <text x="95" y="250" text-anchor="middle" font-size="12" fill="#10b981" font-weight="600">Clean Result</text>
+      </g>
+
+      <!-- Logic -->
+      <rect x="40" y="280" width="720" height="30" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+      <text x="400" y="300" text-anchor="middle" font-size="11" fill="#4b5563">
+        1. IoU > 0.45 → Duplicate  |  2. Center inside box → Duplicate
+      </text>
+      
+      <defs>
+        <marker id="arrow3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+          <polygon points="0 0, 10 3, 0 6" fill="#2563eb"/>
+        </marker>
+      </defs>
+    </svg>
+    <div class="caption">Enhanced NMS uses both IoU and center containment to remove duplicates</div>
+  </div>
+  
+  <button class="btn btn-primary" onclick="openModal('modal-nms')" style="margin-top: 30px;">
+    <span>View Algorithm</span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="9 18 15 12 9 6"/>
+    </svg>
+  </button>
+</section>
+
+<!-- DETECTION FLOW -->
+<section id="flow" class="section">
+  <h2 class="section-title">Complete Detection Flow</h2>
+  <p class="section-subtitle">Step-by-step process from image upload to final results.</p>
+  
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Image Upload</h3>
+        <p>User uploads driver images through browser interface. Files are validated and stored in memory as base64 data URLs.</p>
+      </div>
+    </div>
+    
+    <div class="flow-step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Lazy Model Loading</h3>
+        <p>On "Process Images" click, both ONNX models download and initialize with WebAssembly. Models cache in memory for reuse.</p>
+      </div>
+    </div>
+    
+    <div class="flow-step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Preprocessing</h3>
+        <p>Images resize to 640×640 with letterbox, normalize to [0, 1], and convert to float32 tensors with separated RGB channels.</p>
+      </div>
+    </div>
+    
+    <div class="flow-step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Parallel Inference</h3>
+        <p>Both models process tensors simultaneously, outputting 8400 potential detections with bounding boxes and confidence scores.</p>
+      </div>
+    </div>
+    
+    <div class="flow-step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h3>Parse & Filter</h3>
+        <p>Extract detections above 0.25 confidence threshold. Convert coordinates from model space back to original image dimensions.</p>
+      </div>
+    </div>
+    
+    <div class="flow-step">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <h3>Class Unification</h3>
+        <p>Map different class names to standardized labels (Phone/PhoneUse → Phone Usage, Cigarette → Smoking).</p>
+      </div>
+    </div>
+    
+    <div class="flow-step">
+      <div class="step-num">7</div>
+      <div class="step-content">
+        <h3>Enhanced NMS</h3>
+        <p>Group detections by class, sort by confidence, apply NMS to remove duplicates while preserving separate instances.</p>
+      </div>
+    </div>
+    
+    <div class="flow-step">
+      <div class="step-num">8</div>
+      <div class="step-content">
+        <h3>Visualization</h3>
+        <p>Draw color-coded bounding boxes on canvas (red for dangerous, green for safe). Generate and display safety instructions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="section">
+  <h2 class="section-title">Team & Contributions</h2>
+  <p class="section-subtitle">Developed under Advanced Course on Green Skills and AI (Skills4Future Program).</p>
+  
+  <div class="team-grid">
+    <div class="team-member">
+      <h4>Chaitanya Naik</h4>
+      <p>YOLOv8 Model Training</p>
+    </div>
+    <div class="team-member">
+      <h4>Soham Jadhav</h4>
+      <p>YOLO11 Model Training</p>
+    </div>
+    <div class="team-member">
+      <h4>Divyanshu Mishra</h4>
+      <p>CNN Model Training</p>
+    </div>
+    <div class="team-member">
+      <h4>Anurag Pawar</h4>
+      <p>Backend Logic</p>
+    </div>
+  </div>
+  
+  <div class="data-source" style="margin-top: 40px;">
+    <h4>Additional Models & Backend</h4>
+    <p><strong>Divyanshu Mishra</strong> trained a CNN-based model that achieves excellent accuracy but is not browser-compatible due to computational requirements. This model can be run locally for enhanced detection capabilities.</p>
+    <p><strong>Anurag Pawar</strong> developed the backend logic and server infrastructure for advanced deployment scenarios.</p>
+    <p>For complete model access and backend implementation, visit our <a href="https://github.com/AlbatrossC/Driver-Monitoring-System" target="_blank">GitHub repository</a>.</p>
+  </div>
+  
+  <p style="margin-top: 30px; color: var(--secondary);">
+    <strong>Program:</strong> Advanced Course on Green Skills and Artificial Intelligence<br>
+    <strong>Organized by:</strong> Edunet Foundation, AICTE, Shell India Markets Pvt. Ltd.<br>
+    <strong>Mentor:</strong> Professor Sarthak Narnor
+  </p>
+</section>
+
+<!-- MODALS -->
+
+<!-- Preprocessing Modal -->
+<div id="modal-prep" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <span class="modal-title">preprocessing.js</span>
+      <button class="modal-close" onclick="closeModal('modal-prep')">×</button>
+    </div>
+    <div class="modal-body">
+<pre><span class="kwd">function</span> <span class="fun">preprocess</span>(img) {
+    <span class="kwd">const</span> INPUT_SIZE = <span class="num">640</span>;
+    <span class="kwd">const</span> canvas = document.<span class="fun">createElement</span>(<span class="str">'canvas'</span>);
+    canvas.width = INPUT_SIZE;
+    canvas.height = INPUT_SIZE;
+    <span class="kwd">const</span> ctx = canvas.<span class="fun">getContext</span>(<span class="str">'2d'</span>);
+    
+    <span class="com">// Fill canvas with neutral gray background</span>
+    ctx.fillStyle = <span class="str">'#808080'</span>;
+    ctx.<span class="fun">fillRect</span>(<span class="num">0</span>, <span class="num">0</span>, INPUT_SIZE, INPUT_SIZE);
+    
+    <span class="com">// Calculate aspect-ratio preserving scale</span>
+    <span class="kwd">const</span> scale = Math.<span class="fun">min</span>(
+        INPUT_SIZE / img.width,
+        INPUT_SIZE / img.height
+    );
+    
+    <span class="kwd">const</span> newWidth = img.width * scale;
+    <span class="kwd">const</span> newHeight = img.height * scale;
+    
+    <span class="com">// Center the image on canvas (letterbox technique)</span>
+    <span class="kwd">const</span> offsetX = (INPUT_SIZE - newWidth) / <span class="num">2</span>;
+    <span class="kwd">const</span> offsetY = (INPUT_SIZE - newHeight) / <span class="num">2</span>;
+    
+    ctx.<span class="fun">drawImage</span>(img, offsetX, offsetY, newWidth, newHeight);
+    
+    <span class="com">// Extract pixel data and convert to tensor</span>
+    <span class="kwd">const</span> imageData = ctx.<span class="fun">getImageData</span>(<span class="num">0</span>, <span class="num">0</span>, INPUT_SIZE, INPUT_SIZE);
+    <span class="kwd">const</span> tensor = <span class="kwd">new</span> Float32Array(<span class="num">3</span> * INPUT_SIZE * INPUT_SIZE);
+    
+    <span class="com">// Normalize to [0, 1] and separate RGB channels</span>
+    <span class="com">// Format: [R, R, R...], [G, G, G...], [B, B, B...]</span>
+    <span class="kwd">for</span> (<span class="kwd">let</span> i = <span class="num">0</span>; i < imageData.data.length; i += <span class="num">4</span>) {
+        <span class="kwd">const</span> idx = i / <span class="num">4</span>;
+        tensor[idx] = imageData.data[i] / <span class="num">255.0</span>;  <span class="com">// R channel</span>
+        tensor[INPUT_SIZE * INPUT_SIZE + idx] = imageData.data[i + <span class="num">1</span>] / <span class="num">255.0</span>;  <span class="com">// G channel</span>
+        tensor[<span class="num">2</span> * INPUT_SIZE * INPUT_SIZE + idx] = imageData.data[i + <span class="num">2</span>] / <span class="num">255.0</span>;  <span class="com">// B channel</span>
+    }
+    
+    <span class="kwd">return</span> { tensor, scale, offsetX, offsetY };
+}</pre>
+    </div>
+  </div>
+</div>
+
+<!-- NMS Modal -->
+<div id="modal-nms" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <span class="modal-title">nms.js - Enhanced Non-Maximum Suppression</span>
+      <button class="modal-close" onclick="closeModal('modal-nms')">×</button>
+    </div>
+    <div class="modal-body">
+<pre><span class="com">// Enhanced NMS with center containment check</span>
+<span class="kwd">function</span> <span class="fun">boxesOverlap</span>(box1, box2, iouThreshold) {
+    <span class="com">// Method 1: Traditional IoU calculation</span>
+    <span class="kwd">const</span> iou = <span class="fun">calculateIoU</span>(box1, box2);
+    <span class="kwd">if</span> (iou > iouThreshold) {
+        <span class="kwd">return</span> <span class="kwd">true</span>;  <span class="com">// Boxes overlap significantly</span>
+    }
+    
+    <span class="com">// Method 2: Center containment check (our innovation)</span>
+    <span class="kwd">const</span> center1 = {
+        x: (box1.x1 + box1.x2) / <span class="num">2</span>,
+        y: (box1.y1 + box1.y2) / <span class="num">2</span>
+    };
+    <span class="kwd">const</span> center2 = {
+        x: (box2.x1 + box2.x2) / <span class="num">2</span>,
+        y: (box2.y1 + box2.y2) / <span class="num">2</span>
+    };
+    
+    <span class="com">// Check if box1 center is inside box2</span>
+    <span class="kwd">if</span> (center1.x >= box2.x1 && center1.x <= box2.x2 &&
+        center1.y >= box2.y1 && center1.y <= box2.y2) {
+        <span class="kwd">return</span> <span class="kwd">true</span>;  <span class="com">// Same object detected</span>
+    }
+    
+    <span class="com">// Check if box2 center is inside box1</span>
+    <span class="kwd">if</span> (center2.x >= box1.x1 && center2.x <= box1.x2 &&
+        center2.y >= box1.y1 && center2.y <= box1.y2) {
+        <span class="kwd">return</span> <span class="kwd">true</span>;  <span class="com">// Same object detected</span>
+    }
+    
+    <span class="kwd">return</span> <span class="kwd">false</span>;  <span class="com">// Different objects</span>
+}
+
+<span class="kwd">function</span> <span class="fun">enhancedNMS</span>(detections, iouThreshold) {
+    <span class="com">// Sort detections by confidence score (highest first)</span>
+    <span class="kwd">const</span> sorted = [...detections].<span class="fun">sort</span>((a, b) => 
+        b.confidence - a.confidence
+    );
+    
+    <span class="kwd">const</span> keep = [];
+    
+    <span class="kwd">while</span> (sorted.length > <span class="num">0</span>) {
+        <span class="com">// Take the highest confidence detection</span>
+        <span class="kwd">const</span> best = sorted.<span class="fun">shift</span>();
+        keep.<span class="fun">push</span>(best);
+        
+        <span class="com">// Remove overlapping boxes using enhanced overlap check</span>
+        sorted = sorted.<span class="fun">filter</span>(box => 
+            !<span class="fun">boxesOverlap</span>(best.bbox, box.bbox, iouThreshold)
+        );
+    }
+    
+    <span class="kwd">return</span> keep;
+}
+
+<span class="com">// Main merging function - applies NMS per unified class</span>
+<span class="kwd">function</span> <span class="fun">mergeDetections</span>(chaitanyaResults, sohamResults) {
+    <span class="com">// Step 1: Combine all detections and unify class names</span>
+    <span class="kwd">const</span> allDetections = <span class="fun">unifyClassNames</span>([
+        ...chaitanyaResults,
+        ...sohamResults
+    ]);
+    
+    <span class="com">// Step 2: Group detections by unified class</span>
+    <span class="kwd">const</span> grouped = <span class="fun">groupByClass</span>(allDetections);
+    
+    <span class="com">// Step 3: Apply Enhanced NMS to each class separately</span>
+    <span class="kwd">const</span> final = {};
+    <span class="kwd">for</span> (<span class="kwd">const</span> [className, detections] <span class="kwd">of</span> Object.<span class="fun">entries</span>(grouped)) {
+        final[className] = <span class="fun">enhancedNMS</span>(detections, <span class="num">0.45</span>);
+    }
+    
+    <span class="kwd">return</span> final;
+}</pre>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(id) {
+  const modal = document.getElementById(id);
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+// Close on outside click
+document.querySelectorAll('.modal').forEach(modal => {
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal(modal.id);
+    }
+  });
+});
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal.active').forEach(modal => {
+      closeModal(modal.id);
+    });
+  }
+});
+</script>
+
+</body>
+</html>

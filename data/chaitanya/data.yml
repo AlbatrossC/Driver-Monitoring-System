@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 5
+names: ['Cigarette', 'Drinking', 'Eating', 'Phone', 'Seatbelt']
+
+roboflow:
+  workspace: computer-vision-ao07t
+  project: abnormal-driver-behaviour-bh1gs
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/computer-vision-ao07t/abnormal-driver-behaviour-bh1gs/dataset/1

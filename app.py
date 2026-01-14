@@ -22,20 +22,20 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # Global model variables
-chinmay_model = None
+chaitanya_model = None
 soham_model = None
 cnn_model = None
 
 def load_models():
     """Load all models at startup with error handling"""
-    global chinmay_model, soham_model, cnn_model
+    global chaitanya_model, soham_model, cnn_model
     
     try:
         logger.info("Starting model loading process...")
         
         start_time = time.time()
-        chinmay_model = YOLO('models/chinmay/best.pt')
-        logger.info(f"Chinmay YOLO model loaded in {time.time() - start_time:.2f}s")
+        chaitanya_model = YOLO('models/chaitanya/best.pt')
+        logger.info(f"chaitanya YOLO model loaded in {time.time() - start_time:.2f}s")
         
         start_time = time.time()
         soham_model = YOLO('models/soham/best.pt')
@@ -55,7 +55,7 @@ def load_models():
 load_models()
 
 # Class mappings
-CHINMAY_CLASSES = ['Cigarette', 'Drinking', 'Eating', 'Phone', 'Seatbelt']
+chaitanya_CLASSES = ['Cigarette', 'Drinking', 'Eating', 'Phone', 'Seatbelt']
 SOHAM_CLASSES = ['Distracted', 'Drinking', 'Drowsy', 'Eating', 'PhoneUse', 'SafeDriving', 'Seatbelt', 'Smoking']
 CNN_CLASSES = ['Smoking/Drinking/Yawning', 'safe_driving', 'talking_phone', 'texting_phone', 'turning']
 
@@ -157,7 +157,7 @@ def non_max_suppression_per_class(boxes, iou_threshold=0.5):
     
     return keep
 
-def confidence_based_voting(chinmay_results, soham_results):
+def confidence_based_voting(chaitanya_results, soham_results):
     """
     Apply confidence-based voting with proper NMS:
     - Combine all detections from both models per class
@@ -166,22 +166,22 @@ def confidence_based_voting(chinmay_results, soham_results):
     """
     IOU_THRESHOLD = 0.5
     
-    # Parse chinmay detections
-    chinmay_detections = {}
-    for box in chinmay_results[0].boxes:
+    # Parse chaitanya detections
+    chaitanya_detections = {}
+    for box in chaitanya_results[0].boxes:
         cls_id = int(box.cls[0])
         conf = float(box.conf[0])
         xyxy = box.xyxy[0].cpu().numpy()
         
-        original_class = CHINMAY_CLASSES[cls_id]
+        original_class = chaitanya_CLASSES[cls_id]
         unified_class = unify_class_name(original_class)
         
-        if unified_class not in chinmay_detections:
-            chinmay_detections[unified_class] = []
-        chinmay_detections[unified_class].append({
+        if unified_class not in chaitanya_detections:
+            chaitanya_detections[unified_class] = []
+        chaitanya_detections[unified_class].append({
             'bbox': xyxy,
             'conf': conf,
-            'source': 'chinmay',
+            'source': 'chaitanya',
             'original_class': original_class
         })
     
@@ -210,18 +210,18 @@ def confidence_based_voting(chinmay_results, soham_results):
     
     # Combine and apply NMS per class
     final_detections = {}
-    all_classes = set(chinmay_detections.keys()) | set(soham_detections.keys())
+    all_classes = set(chaitanya_detections.keys()) | set(soham_detections.keys())
     
     logger.debug(f"Processing {len(all_classes)} unique classes")
     
     for unified_class in all_classes:
-        chinmay_boxes = chinmay_detections.get(unified_class, [])
+        chaitanya_boxes = chaitanya_detections.get(unified_class, [])
         soham_boxes = soham_detections.get(unified_class, [])
         
         # Combine all boxes for this class
-        all_boxes = chinmay_boxes + soham_boxes
+        all_boxes = chaitanya_boxes + soham_boxes
         
-        logger.debug(f"{unified_class}: Chinmay={len(chinmay_boxes)}, Soham={len(soham_boxes)}, Total={len(all_boxes)}")
+        logger.debug(f"{unified_class}: chaitanya={len(chaitanya_boxes)}, Soham={len(soham_boxes)}, Total={len(all_boxes)}")
         
         # Apply NMS to remove overlapping duplicates
         filtered_boxes = non_max_suppression_per_class(all_boxes, IOU_THRESHOLD)
@@ -231,7 +231,7 @@ def confidence_based_voting(chinmay_results, soham_results):
         if filtered_boxes:
             final_detections[unified_class] = filtered_boxes
     
-    return final_detections, chinmay_detections, soham_detections
+    return final_detections, chaitanya_detections, soham_detections
 
 def draw_detections(image, detections):
     """Draw bounding boxes and labels on image"""
@@ -311,12 +311,12 @@ def process_images():
         image = cv2.imread(filepath)
         
         # Run YOLO models
-        chinmay_results = chinmay_model(image, verbose=False)
+        chaitanya_results = chaitanya_model(image, verbose=False)
         soham_results = soham_model(image, verbose=False)
         
         # Apply confidence-based voting
-        final_detections, chinmay_raw, soham_raw = confidence_based_voting(
-            chinmay_results, soham_results
+        final_detections, chaitanya_raw, soham_raw = confidence_based_voting(
+            chaitanya_results, soham_results
         )
         
         # Draw detections
@@ -338,10 +338,10 @@ def process_images():
         cnn_result = predict_cnn(filepath)
         
         # Prepare detailed report data
-        chinmay_details = []
-        for cls, boxes in chinmay_raw.items():
+        chaitanya_details = []
+        for cls, boxes in chaitanya_raw.items():
             for box in boxes:
-                chinmay_details.append({
+                chaitanya_details.append({
                     'class': cls,
                     'confidence': float(box['conf']),
                     'bbox': box['bbox'].tolist()
@@ -363,7 +363,7 @@ def process_images():
             'detection_counts': detection_counts,
             'instructions': instructions,
             'detailed_report': {
-                'chinmay_model': chinmay_details,
+                'chaitanya_model': chaitanya_details,
                 'soham_model': soham_details,
                 'cnn_model': cnn_result
             }
