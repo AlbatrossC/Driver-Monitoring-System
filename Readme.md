@@ -1,6 +1,8 @@
 # Driver Monitoring System
 
-[![Live Demo](https://img.shields.io/badge/Demo-Live-brightgreen)](https://your-live-demo-link-here)
+![Driver Monitoring System Demo](resources/demo-image.jpg)
+
+[![Live Demo](https://img.shields.io/badge/Demo-Live-brightgreen)](https://driver-monitoring.vercel.app/)
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -8,8 +10,8 @@
 
 ## Quick Links
 
-- **Live Demo:** [https:link](https://link)
-- **Repository:** [GitHub](https://github.com/AlbatrossC/Driver-Monitoring-System)
+- **Live Demo:** [https://driver-monitoring.vercel.app/](https://driver-monitoring.vercel.app/)
+- **Repository:** [https://github.com/AlbatrossC/Driver-Monitoring-System](https://github.com/AlbatrossC/Driver-Monitoring-System)
 
 ---
 
@@ -191,7 +193,7 @@ Driver-Monitoring-System/
 
 ### Browser-Based Demo
 
-1. Visit the [live demo](https://your-live-demo-link-here)
+1. Visit the [live demo](https://driver-monitoring.vercel.app/)
 2. Upload an image
 3. The system will automatically detect and highlight unsafe behaviors
 
@@ -235,3 +237,16 @@ This project was developed as part of the **Advanced Course on Green Skills and 
 | Custom CNN | Low | Moderate | 🖥️ Local Only |
 
 ---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Acknowledgments
+
+Special thanks to:
+- Edunet Foundation, AICTE, and Shell India Markets Pvt. Ltd. for organizing the Skills4Future Program
+- Professor Sarthak Narnor for mentorship and guidance
+- The open-source community for providing datasets and tools
