@@ -36,29 +36,26 @@ document.getElementById('demoBtn').onclick = async () => {
   try {
     modalBody.innerHTML = '<div class="loading-state"><div class="loading-spinner"></div><p>Loading demo images...</p></div>';
     
-    // Fetch list of demo images
-    const response = await fetch('/demo-images/');
+    // Fetch list of demo images from JSON file
+    const response = await fetch('/demo-images/images.json');
     if (!response.ok) {
-      throw new Error('Failed to load demo images');
+      throw new Error('Failed to load demo images list');
     }
     
-    const html = await response.text();
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
-    const links = doc.querySelectorAll('a');
+    const imageList = await response.json();
     
-    demoImages = Array.from(links)
-      .map(link => link.getAttribute('href'))
-      .filter(href => href && /\.(jpg|jpeg|png|gif|webp)$/i.test(href))
-      .map(href => ({
-        name: href,
-        url: `/demo-images/${href}`
-      }));
-    
-    if (demoImages.length === 0) {
+    if (!Array.isArray(imageList) || imageList.length === 0) {
       modalBody.innerHTML = '<div class="error-state"><p>No demo images found</p></div>';
       return;
     }
+    
+    // Map to image objects
+    demoImages = imageList.map(filename => ({
+      name: filename,
+      url: `/demo-images/${filename}`
+    }));
+    
+    console.log(`Loaded ${demoImages.length} demo images`);
     
     // Render demo images grid
     renderDemoGrid();
@@ -548,3 +545,5 @@ function confidenceBasedMerge(chaitanyaDetections, sohamDetections) {
 /* ================= INITIALIZE ================= */
 // Ensure Clear button is hidden initially
 document.getElementById('clearBtn').style.display = 'none';
+
+console.log('DMS Web Application initialized');
