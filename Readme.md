@@ -77,7 +77,7 @@ python app.py
 - `6:` Seatbelt
 - `7:` Smoking
 
-### Dataset 2: Chaitanya Naik - Roboflow Universe Dataset
+### Dataset 2: Chaitanya kulkarni - Roboflow Universe Dataset
 
 **Link:** [Abnormal Driver Behaviour Dataset](https://universe.roboflow.com/university-exrks/abnormal-driver-behaviour)
 
@@ -215,7 +215,7 @@ This project was developed as part of the **Advanced Course on Green Skills and 
 
 | Name | Contribution |
 |------|--------------|
-| **Chaitanya Naik** | YOLOv8 Model Training & Dataset Preparation |
+| **Chaitanya kulkarni** | YOLOv8 Model Training & Dataset Preparation |
 | **Soham Jadhav** | YOLO11 Model Training & Data Annotation |
 | **Divyanshu Mishra** | CNN Model Training & Image Classification |
 | **Anurag Pawar** | Backend Logic & System Integration |
